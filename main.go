@@ -21,7 +21,7 @@ func main() {
 
 func index(res http.ResponseWriter, req *http.Request) {
 	cookie := getCookie(res, req)
-	cookie = appendCookieValue(cookie, res)
+	appendCookieValue(cookie, res)
 	xs := strings.Split(cookie.Value, "|")
 	tmpl.ExecuteTemplate(res, "index.html", xs)
 }
@@ -40,7 +40,7 @@ func getCookie(res http.ResponseWriter, request *http.Request) *http.Cookie {
 	return cookie
 }
 
-func appendCookieValue(cookie *http.Cookie, res http.ResponseWriter) *http.Cookie {
+func appendCookieValue(cookie *http.Cookie, res http.ResponseWriter)  {
 	p1 := "dog.jpg"
 	p2 := "cat.jpg"
 	p3 := "rabbit.jpg"
@@ -57,5 +57,4 @@ func appendCookieValue(cookie *http.Cookie, res http.ResponseWriter) *http.Cooki
 	}
 	cookie.Value = value
 	http.SetCookie(res, cookie)
-	return cookie
 }
